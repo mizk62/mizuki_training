@@ -1,0 +1,23 @@
+<p>mizukibbs</p>
+（記事一覧ページ）
+
+<%= link_to 'Add New', new_post_path, class: 'add_new' %>
+<ul>
+  <% @posts.each do |post| %>
+  <li>
+    <p><%= post.title %></p>
+    <p><%= simple_format post.body %></p>
+    <p><%= link_to '[Edit]', edit_post_path(post) %><%= link_to '[x]', post_path(post),method: :delete, class: 'command', data: { confirm: 'Sure?' } %></p>
+    <p>Comments</p>
+    <%= form_for( [post, post.comments.build] ) do |f| %>
+      <p>
+        <%= f.label :body, "コメント" %><br />
+        <%= f.text_area :body, cols: 60, rows: 8 %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
