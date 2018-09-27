@@ -18,6 +18,10 @@
         <%= f.submit %>
       </p>
     <% end %>
+    <div class="js-grid-juicy-projects">
+      <%= render :partial => "likes/like_links", :locals => { closet: closet } %>
+
+    </div>
   </li>
   <% end %>
 </ul>

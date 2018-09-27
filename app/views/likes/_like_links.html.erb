@@ -1,0 +1,6 @@
+<% if post.like_user(current_user.id) %>
+  <%= link_to '[Like]', post_like_path(post, post.like_user(current_user)), method: :delete, class: 'heart-icon', remote: true do %>
+  <%#= button_to 'いいねを取り消す', post_like_path(@post), method: :delete %>
+<% else %>
+  <%= link_to '[Unlike]', post_likes_path(post), method: :post, class: 'empty-heart', remote: true do %>
+<% end %>
